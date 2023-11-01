@@ -9,6 +9,7 @@ from common import tmp_path, TmpStore
 from notif import NotificationProcessor
 from browser_control import BrowserControl
 from jobs_list import JobListingProcessor
+from job_page import JobPageProcessor
 
 def get_notif_links(controller: BrowserControl, tmp_store: TmpStore, links_filename: str = '') -> list[str]:
     file = tmp_path / links_filename
@@ -33,7 +34,8 @@ def main(export_html_path: Path, start_browser_only: bool = False):
     links_filename = 'links'
     notif_links = get_notif_links(controller, tmp_store, links_filename)
 
-    job_listing = JobListingProcessor(controller, tmp_store, config['position'])
+    job_page_processor = JobPageProcessor(controller, tmp_store)
+    job_listing = JobListingProcessor(controller, tmp_store, config['position'], job_page_processor)
     for index, notif_link in enumerate(notif_links):
         job_listing.process_all_pages(notif_link, index)
         job_listing.export_and_save(export_html_path)
