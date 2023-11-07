@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from configparser import SectionProxy
+from pathlib import Path
 
 from common import countdown, load_html, tmp_path
 
@@ -18,7 +19,7 @@ def source_file(index: str|int):
 class BrowserControl:
     def __init__(self, config_section: SectionProxy):
         browser_used = config_section[use_browser]
-        profile_path = config_section[browser_profile_path]
+        profile_path = self.get_and_check_profile_path(config_section)
         if browser_used == BrowserType.FIREFOX:
             from selenium.webdriver import Firefox as Browser
             from selenium.webdriver.firefox.options import Options
@@ -37,6 +38,17 @@ class BrowserControl:
         service = Service(config_section[driver_path])
         self.browser = Browser(service=service, options=options)
         countdown(2)
+
+    def get_and_check_profile_path(self, config_section: SectionProxy) -> str:
+        profile_path = Path(config_section[browser_profile_path])
+        if not profile_path.is_dir():
+            print('Warning, the set profile dir is missing. Trying to create.')
+            try:
+                profile_path.mkdir()
+            except:
+                print('Creating the directory failed. Please check the path and create its parent dir.')
+                raise
+        return str(profile_path)
 
     def navigate(self, URL: str):
         self.browser.get(URL)

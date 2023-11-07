@@ -16,15 +16,15 @@ So it can spare time and attention. The original filters e.g. check
 you can also create your own filters easily, feel free to PR or issue ideas
 
 ## Install
-1. Create a few job searches on the site, click to add alerts.
-2. Install selenium in python. Any working setup from python 3.8 and above should work.
-3. Set the configuration ini file to get a selenium window opened by the code.
+1. Create a few job searches with alerts[^3].
+2. Install selenium in python[^4]. Any working setup from python 3.8 and above should work.
+3. Set the `driver_path`[^5] in the configuration file (injobot.ini) to get a selenium window opened by the code. Set also `browser_profile_path` where the browser can save the profile information.
 4. First run should be `injobot.py login` that only starts selenium and opens linkedin.
 5. If you login, the profile option saves the cookies and the tool can access your alerts and can search.
 
 ## Run
 1. Run the tool regularly[^1], the code scrapes even with the window not being active.
-2. Check the results in the exported html output[^3].
+2. Check the results in the exported html output[^6].
 
 If internet connection suxx (other error maybe?) and run gets stuck, feel free to stop it:
 - the notifocation links are saved temporarily, so is the results of the processed ones
@@ -32,6 +32,9 @@ If internet connection suxx (other error maybe?) and run gets stuck, feel free t
 
 Tested on linux only, feel free to PR the missing code for other platforms.
 
-[^1]: Suggested interval is one day, but should work with longer also<br>
+[^1]: suggested interval is one day, but should work with longer also<br>
 [^2]: see filters above and details in the `position.py` file<br>
-[^3]: it is a really simple html page, feel free to develop and PR
+[^3]: [link](https://www.linkedin.com/help/linkedin/answer/a511279); you can disable emails at jobs/preferences/job alerts<br>
+[^4]: e.g. arch linux `sudo pacman -S python-selenium`<br>
+[^5]: the default is set for arch linux<br>
+[^6]: it is a really simple html page, feel free to develop and PR
