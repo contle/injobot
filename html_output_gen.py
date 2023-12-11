@@ -22,7 +22,7 @@ body {font-family: "Lato", sans-serif;}
   width: 30%;
 }
 
-.tab button {
+.tablinks {
   display: block;
   background-color: inherit;
   color: black;
@@ -34,14 +34,18 @@ body {font-family: "Lato", sans-serif;}
   cursor: pointer;
   transition: 0.3s;
   font-size: 17px;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+  cursor: pointer;
+  vertical-align: middle;
 }
 
-.tab button:hover {
+.tablinks:hover {
   background-color: #ddd;
 }
 
-.tab button.active {
+.tablinks:active {
   background-color: #ccc;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
 
 .tabcontent {
@@ -107,7 +111,7 @@ def tab_button(id: int, caption: str, first_of_list: bool) -> str:
     return f'  <button class="tablinks" onclick="readPosition(event, {id})"{default_text}>{caption}</button>\n'
 
 def apply_button(job_id: int, caption: str) -> str:
-    return f'<button onclick="applied({job_id})">{caption}</button>'
+    return f'<div onclick="applied({job_id})">{caption}</div>'
 
 def tab_details(job_id: int, details: ExportRecords, description: str) -> str:
     pre_text = ''
