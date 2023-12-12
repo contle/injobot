@@ -1,1 +1,7 @@
-injobot.ini
+__pycache__/
+*.py[cod]
+*.ini
+*.log
+*.yaml
+*.descr
+db/
