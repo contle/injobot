@@ -35,6 +35,6 @@ Tested on linux only, feel free to PR the missing code for other platforms.
 [^1]: suggested interval is one day, but should work with longer also<br>
 [^2]: see filters above and details in the `position.py` file<br>
 [^3]: [link](https://www.linkedin.com/help/linkedin/answer/a511279); you can disable emails at jobs/preferences/job alerts<br>
-[^4]: e.g. arch linux `sudo pacman -S python-selenium`<br>
+[^4]: e.g. on arch linux install the `python-selenium` AUR package<br>
 [^5]: the default is set for arch linux<br>
 [^6]: it is a really simple html page, feel free to develop and PR
