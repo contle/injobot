@@ -13,7 +13,19 @@ html_start = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+html, body, .tab, .tabcontent {
+  height: 100%;
+}
+
+.tab, .tabcontent {
+  overflow-y: scroll;
+}
 
 .tab {
   float: left;
@@ -55,11 +67,9 @@ body {font-family: "Lato", sans-serif;}
 </head>
 <body>
 
-<button onclick="saveIdsAndClose()">save ids and close</button><br>\n\n'''
+<!--maybe later: <button onclick="saveIdsAndClose()">save ids and close</button><br>-->\n\n'''
 
-html_end = '''<br><button onclick="saveIdsAndClose()">save ids and close</button>
-
-<script>
+html_end = '''<script>
 function readPosition(evt, jobId) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -87,6 +97,7 @@ async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/* // maybe later:
 async function saveIdsAndClose() {
   var bb = new Blob([appliedIds], { type: 'text/plain' });
   var a = document.createElement('a');
@@ -96,7 +107,7 @@ async function saveIdsAndClose() {
   a.remove();
   await sleep(100);
   open(location, '_self').close();
-}
+}*/
 </script>
 
 </body>
